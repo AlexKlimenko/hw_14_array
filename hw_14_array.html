@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HW_1_JS</title>
+	</head>
+	<body>
+		
+		<script>
+			console.log("ФУНКЦИИ. ЗАДАЧИ");
+
+			console.log("1. Создать ф-цию, которая будет принимать любое кол-во чисел и возвращать их произведение");
+
+			function multiply() {
+				if (arguments.length > 0) {
+					a = 1;
+					for (let i = 0, len = arguments.length; i < len; i++) {
+						a *= arguments[i];
+					}
+				} else {a = 0};
+				return a;
+			}
+			document.write(`1. ${multiply(5, 8, 10)}`);
+			
+			document.write("<br>");
+
+
+			console.log("3. Сделать функцию, которая принимает строку и возвращает строку-перевертыш.");
+			
+			function revStr(str) {
+				var newStr = "";
+				for (let i = str.length; i--; ) {
+					newStr += str[i]; 
+				}
+				return newStr;
+			}
+			document.write(`3. ${revStr("test")}`);
+
+			document.write("<br>");
+
+
+			console.log("4. Создать функцию, которая принимает аргументом строку из букв, а возвращает строку из пробелов и юникода");
+
+			function getCodeStringFromText(str) {
+				var newStr ="";
+				for (let i = 0, len = str.length; i < len; i++) {
+					if (i != str.length) {
+						newStr += str.charCodeAt(i) + " ";
+					} else {newStr += str.charCodeAt(i)};
+						
+				}
+				return newStr;
+			}
+			document.write(`4. ${getCodeStringFromText("hello")}`);
+
+			document.write("<br>");
+
+
+
+			console.log("6. Создать функции ...с колбэком");
+
+			
+			var arr_1 = ['my', 'name', 'is', 'Trinity'];
+			var arr_2 = [10, 20, 30];
+			var arr_3 = [{age: 45, name: "John"}, {age: 20, name: "Aaron"}];
+			var arr_4 = ["abc", "123"];
+			var arr_5 = [1, 2, 3];
+
+
+			function workWithArr(arr, handler) {
+
+				for (let i = 0, len = arr.length; i < len; i++) {
+					arr[i] = handler(arr[i]);
+				}
+        		console.log(arr);
+				return arr;
+			}
+
+			function task_1(el) {
+				var result = "";
+				for (let i = 0, len = el.length; i < len; i++) {
+					if (i != ",") {
+						if (i != 0) {
+							result += el[i];
+						} else {
+							result += el[i].toUpperCase();
+						}
+					} else continue;
+						
+				}
+				console.log(result);
+				return result;
+			}
+
+			function task_2(el) {
+				el *= 10;
+				return el;
+			}
+
+			function task_3(el){
+				var result = el.name + " is " + el.age;
+				return result;
+			}
+
+			function task_4(el) {
+				var result = "";
+				for (let i = el.length; i--;) {
+					result += el[i];
+				}
+				return result;
+			}
+
+			function task_5(el) {
+				return el + 5;
+			}
+
+
+			let strRes_1 = workWithArr(arr_1, task_1)
+			document.write(`New value: ${strRes_1}`);
+			document.write("<br>");
+
+			let strRes_2 = workWithArr(arr_2, task_2)
+			document.write(`New value: ${strRes_2}`);
+			document.write("<br>");
+
+			let strRes_3 = workWithArr(arr_3, task_3)
+			document.write(`New value: ${strRes_3}`);
+			document.write("<br>");
+
+			let strRes_4 = workWithArr(arr_4, task_4)
+			document.write(`New value: ${strRes_4}`);
+			document.write("<br>");
+	
+			let strRes_5 = workWithArr(arr_5, task_5)
+			document.write(`New value: ${strRes_5}`);
+		
+
+</script>
+</body>
